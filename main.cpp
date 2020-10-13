@@ -29,7 +29,7 @@ char comprobar(char u){
 //--------------------------------------------------
 int main()
 {
-
+ cout<<"PRACTICA NUMERO 2"<<endl;
  int numero_ejercicio;
  cout<<"Seleccione el ejercicio a revisar: ";
  cin>>numero_ejercicio;
