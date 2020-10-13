@@ -13,6 +13,7 @@ int CharInt(char eo){
     numero=eo-'0';
     return numero;
  }
+//Combrueba si el caracter es un numero
 char comprobar(char u);
 char comprobar(char u){
     char lista[11]={'1','2','3','4','5','6','7','8','9','0'};
@@ -26,15 +27,44 @@ char comprobar(char u){
     return r;
   }
 
+int factorial(int n);
+int factorial(int n){
+    int f=1;
+    for(int i=1;i<=n;i++){
+        f*=i;
+    }
+    return f;
+   }
+//Valida la entrada de un numero como char y los convierte a entero
+int validar_numero(char *n);
+int validar_numero(char *n){
+    int ni;
+    while(true){
+        if(comprobar(n[0])){
+           ni=atoi(n);
+           break;
+        }
+        else{
+            cout<<"Ingrese un valor numerico por favor"<<endl;
+            cout<<"Ingrese el valor nuevamente: ";
+            cin>>n;
+            cout<<endl;
+        }
+    }
+    return ni;
+}
+
 //--------------------------------------------------
 int main()
 {
  cout<<"PRACTICA NUMERO 2"<<endl;
- int numero_ejercicio;
+ char numero_ejercicio[1]={};
+ int numeroswitch;
  cout<<"Seleccione el ejercicio a revisar: ";
  cin>>numero_ejercicio;
+ numeroswitch=validar_numero(numero_ejercicio);
 
- switch(numero_ejercicio){
+ switch(numeroswitch){
  case 2: {
   int i,i2, contador=0,letra=0;
   char ListaDeCaracteres[200]={},ABC[26];
@@ -217,6 +247,7 @@ int main()
          for(int i=0;i<5;i++){
              for(int j=0;j<5;j++){
                  while(true){
+                     //El usario ingresa los valores
                      cout<<"Posicion["<<(i+1)<<"]["<<(j+1)<<"], dijite el numero: ";
                      cin>>matriz[i][j];
                      if(matriz[i][j]>25){
@@ -230,6 +261,7 @@ int main()
          }
       }
      else{
+         //Los valores se escogen al azar
          for(int i=0;i<5;i++){
              for(int j=0;j<5;j++){
                 matriz[i][j]=(1+rand()%25);
@@ -237,6 +269,7 @@ int main()
          }
 
      }
+     //Imprimo la matriz original
      cout<<"Matriz original: "<<"\n"<<endl;
      for(int i=0;i<5;i++){
          for(int j=0;j<5;j++){
@@ -245,18 +278,21 @@ int main()
         cout<<"\n";
      }
      while(contador<opcion){
+         //Asigno los valores a la nueva matriz rotada
          for(int i=0;i<5;i++){
              for(int j=0;j<5;j++){
                 matriz2[i][j]=matriz[(4-j)][(i)];
              }
          }
          contador+=1;
+         //Reasigno valores para nuevamente rotar la maytriz
          for(int i=0;i<5;i++){
              for(int j=0;j<5;j++){
                 matriz[i][j]=matriz2[i][j];
              }
          }
      }
+     //Imprimo la matriz rotada
      cout<<"Matriz rotada: "<<"\n"<<endl;
      for(int i=0;i<5;i++){
          for(int j=0;j<5;j++){
@@ -264,8 +300,20 @@ int main()
             }
         cout<<"\n";
      }
+    break;
     }
-   }
+ case 16:{
+     char n[1]={};
+     int ni,lado_malla;
+     cout<<"Ingrese el valor del lado de la malla: ";
+     cin>>n;
+     ni=validar_numero(n); //Hago validar la entrada del usuario
+     lado_malla=(factorial(ni+ni))/((factorial(ni))*(factorial(ni)));//Calculo el numero de caminos posibles
+     cout<<"\nEl numero de caminos posibles es: "<<lado_malla<<endl;
+     break;
+    }
+    break;
+  }
   return 0;
 }
 
