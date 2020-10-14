@@ -26,6 +26,23 @@ char comprobar(char u){
     }
     return r;
   }
+char comprobar_cadena(char u);
+char comprobar_cadena(char u){
+    char lista[11]={'1','2','3','4','5','6','7','8','9','0'};
+    bool r=false;
+    int c=0;
+    for(int i=0;lista[i]!=0;i++){
+        if(u==lista[i]){
+            c=1;
+            break;
+        }
+    }
+    if(c==1){
+        r=true;
+    }
+    return r;
+  }
+
 
 int factorial(int n);
 int factorial(int n){
@@ -102,10 +119,12 @@ int main()
  }
  case 4:{ //FALTA POR TERMINAR
 
-     char NumeroIngresado;
+     char NumeroIngresado[]={};
+     int NumeroConvertido;
      cout<<"Ingrese un numero por favor: ";
      cin>>NumeroIngresado;
-     cout<<"Se transformo el numero: "<<CharInt(NumeroIngresado)<<endl;
+     NumeroConvertido=atoi(NumeroIngresado);
+     cout<<"Se transformo el numero: "<<NumeroConvertido<<endl;
      break;
      }
   case 6:{
@@ -312,6 +331,16 @@ int main()
      cout<<"\nEl numero de caminos posibles es: "<<lado_malla<<endl;
      break;
     }
+ case 18:{//FALTA POR TERMINAR ESTE EJERCICIO
+     char n[]={};
+     int ni,contador=0;
+     long double i=123456789;
+     cout<<"Ingrese el valor de lenesimo termino";
+     cin>>n;
+     ni=validar_numero(n);
+     while(contador<ni)
+         if(
+
     break;
   }
   return 0;
