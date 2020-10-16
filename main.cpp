@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <string.h>
 #include <ctype.h>
+#include <algorithm>
 using namespace std;
 //-----------------------------------------FUNCIONES
 //Ejercicio numero 2 de la guia
@@ -343,14 +344,24 @@ int main()
      break;
     }
  case 18:{//FALTA POR TERMINAR ESTE EJERCICIO
-     char n[]={};
-     //int ni,contador=0;
-     //long double i=123456789;
-     cout<<"Ingrese el valor de lenesimo termino";
+     int lista[]={0,1,2,3,4,5,6,7,8,9},n;
+     cout<<"Ingrese el valor para n: ";
      cin>>n;
-     //ni=validar_numero(n);
-    break;
+     for(int i=0;i<=n;i++){
+         next_permutation(lista,lista+10);
+     }
+     cout<<"\nValor en la posicion  N introducida: ";
+     for(int i=0;i<10;i++){
+         cout<<lista[i];
+     }
+     cout<<"\n";
+     break;
   }
+ default:{
+    cout<<"El ejercicio ingresado no existe"<<endl;
+    break;
+ }
+
  }
   return 0;
 }
