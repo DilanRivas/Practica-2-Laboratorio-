@@ -7,6 +7,17 @@
 #include <ctype.h>
 using namespace std;
 //-----------------------------------------FUNCIONES
+//Ejercicio numero 2 de la guia
+void fun_c(double *a, int n,double *promedio, double *suma);
+void fun_c(double *a, int n,double *promedio, double *suma){
+    int i;
+    *suma=0.0;
+    for(i=0;i<n;i++){
+        *suma+=(*a+i);
+    }
+    *promedio=(*suma /n);
+    cout<<promedio<<endl;
+}
 int CharInt(char eo);
 int CharInt(char eo){
     int numero;
@@ -333,18 +344,18 @@ int main()
     }
  case 18:{//FALTA POR TERMINAR ESTE EJERCICIO
      char n[]={};
-     int ni,contador=0;
-     long double i=123456789;
+     //int ni,contador=0;
+     //long double i=123456789;
      cout<<"Ingrese el valor de lenesimo termino";
      cin>>n;
-     ni=validar_numero(n);
-     while(contador<ni)
-         if(
-
+     //ni=validar_numero(n);
     break;
   }
+ }
   return 0;
 }
+
+
 
 
 
