@@ -9,14 +9,14 @@
 using namespace std;
 //-----------------------------------------FUNCIONES
 //Ejercicio numero 2 de la guia
-void fun_c(double *a, int n,double *promedio, double *suma);
-void fun_c(double *a, int n,double *promedio, double *suma){
+void fun_c(double *a, int n,double *promedio);
+void fun_c(double *a, int n,double *promedio){
     int i;
-    *suma=0.0;
+    float suma=0.0;
     for(i=0;i<n;i++){
-        *suma+=(*a+i);
+        suma+=(*a+i);
     }
-    *promedio=(*suma /n);
+    *promedio=(suma /n);
     cout<<promedio<<endl;
 }
 int CharInt(char eo);
@@ -290,30 +290,16 @@ int main()
     break;
     }
  case 9:{//FALTA EL 9
-      char numer[]={},convernumer[]={};
-      int N,size,sizec,contador=0,total=0;
+      char numer;
+      int N=0,k=0,size,acum=0,contador=0,total=0;
       cout<<"Ingrese el numero: ";
       cin>>numer;
       cout<<"Ingrese el numero para seccionar: ";
       cin>>size;
-      sizec=size;
-      while(contador<sizec){
-      for(int i=0;i<sizec;i++){
-          if(contador==0){
-           convernumer[i]=numer[i];
-          }
-          else{
-           convernumer[i]=numer[(i+size)];
-           size+=sizec;
-          }
-         }
-      N=atoi(convernumer);
-      cout<<"Numero:"<<N;
-      total+=N;
-      contador+=1;
+      for(int i=0;i<size;i++){
+          N=N*10+(numer[k++]-'0')
       }
-      cout<<"Suma: "<<total<<endl;
-      break;
+
  }
  case 10:{
        int i, total=0, valor,antvalor=0;
