@@ -56,7 +56,7 @@ char comprobar_cadena(char u){
   }
 
 
-int factorial(int n);
+int factorial(int n);//Encuentra el factorial de un numero
 int factorial(int n){
     int f=1;
     for(int i=1;i<=n;i++){
@@ -64,8 +64,8 @@ int factorial(int n){
     }
     return f;
    }
-//Valida la entrada de un numero como char y los convierte a entero
-int validar_numero(char *n);
+
+int validar_numero(char *n);//Valida la entrada de un numero como char y los convierte a entero
 int validar_numero(char *n){
     int ni;
     while(true){
@@ -82,6 +82,73 @@ int validar_numero(char *n){
     }
     return ni;
 }
+//PROBLEMA NUMERO 4
+int Ejercicio_4();
+int Ejercicio_4(){
+    char NumeroIngresado[]={};
+    int NumeroConvertido;
+    cout<<"Ingrese un numero por favor: ";
+    cin>>NumeroIngresado;
+    NumeroConvertido=atoi(NumeroIngresado);
+    return NumeroConvertido;
+}
+
+//PROBLEMA NUMERO 5
+void valnuevo(int&);
+void valnuevo(int& xnum){
+        cout<<"el valor del numero es: "<<xnum<<endl;
+    }
+//PROBLEMA NUMERO 13
+int funcion_galaxia(int *a);
+int funcion_galaxia(int *a){
+    //Imprimir tabla
+    float promedio;
+    int contador=0;
+    int cont =0;
+    cout << "Matriz de la galaxia NGC 1300" << endl << endl;
+    //Imprimir la tabla
+    for(int i=0; i<(6*8); i++){
+        if(*(a+i)>9){
+            cout << *(a+i) << "| ";
+        }else{
+            cout << *(a+i) << " | ";
+        }
+        cont++;
+        //Imprimir salto de linea
+        if (cont ==8){
+            cont = 0;
+            cout << endl;
+        }
+    }
+    //buscador de estrellas
+    for(int i=0; i<(6*8);i++){
+        if(i<8 || i==15 || i==(15+1) || i==23 || i==(23+1) || i==31 || i==(31+1) || i>39){
+            //cout << *(a+i) << " - ";
+            continue;
+        }else{
+            promedio = (*(a+i) + *(a+(i-1)) + *(a+(i+1)) + *(a+(i-8)) + *(a+(i+8)))/5;
+            if(promedio >=6.0){
+                contador++;
+            }
+        }
+    }
+    return contador;
+}
+void ejercicio_13();
+void ejercicio_13(){
+    int matriz_galaxia[6][8]={{0,3,4,0,0,0,6,8},
+                              {5,13,6,0,0,0,2,3},
+                              {2,6,2,7,3,0,10,0},
+                              {0,0,4,15,4,1,6,0},
+                              {0,0,7,12,6,9,10,4}
+                              ,{5,0,6,10,6,4,8,0}};
+    int *punt_galaxia = &matriz_galaxia[0][0];
+    int promedio_galaxia;
+
+    promedio_galaxia=funcion_galaxia(punt_galaxia);
+    cout << "Estrellas encontradas en la imagen: " << promedio_galaxia << endl;
+}
+
 
 //--------------------------------------------------
 int main()
@@ -150,22 +217,55 @@ int main()
   }
   break;
  }
+ case 3:{
+     char palabra1[]="carro";
+     char palabra2[]="avion";
+
+     if (strcmp(palabra1,palabra2)!=0){;
+         cout<<"falso"<<endl;
+     }
+     if (strcmp(palabra1,palabra2)==0){;
+         cout<<"verdadero"<<endl;
+     }
+    break;
+ }
  case 4:{ //FALTA POR TERMINAR
 
-     char NumeroIngresado[]={};
-     int NumeroConvertido;
-     cout<<"Ingrese un numero por favor: ";
-     cin>>NumeroIngresado;
-     NumeroConvertido=atoi(NumeroIngresado);
-     cout<<"Se transformo el numero: "<<NumeroConvertido<<endl;
+     int N;
+     N=Ejercicio_4();
+     cout<<"Se transformo el numero: "<<N<<endl;
      break;
      }
-  case 6:{
+ case 5:{
+     int num;
+     cout<<"digite un numero: ";
+     cin>>num;
+     valnuevo(num);
+     break;
+ }
+ case 6:{
      char PalabraIngresada[]={};
      cout<<"Ingrese una palabra o una oracion: ";
      cin>>PalabraIngresada;
      strupr(PalabraIngresada);
      cout<<"Palabra convertida a Mayusculas: "<<PalabraIngresada<<endl;
+     break;
+ }
+ case 7:{
+     char resultado[27]="";
+     char palabra[50];
+     int i=0,j=0;
+     printf("Ingresa un caracter: ");scanf("%s",palabra);
+     while(palabra[i])
+     {
+         if(!strchr(resultado,palabra[i]))
+             resultado[j++]=palabra[i];
+         i++;
+     }
+     resultado[j]='\0';
+     printf("\nEl caracter es: %s", resultado);
+
+     getchar();
      break;
  }
  case 8:{
@@ -189,6 +289,32 @@ int main()
      cout<<"\n";
     break;
     }
+ case 9:{//FALTA EL 9
+      char numer[]={},convernumer[]={};
+      int N,size,sizec,contador=0,total=0;
+      cout<<"Ingrese el numero: ";
+      cin>>numer;
+      cout<<"Ingrese el numero para seccionar: ";
+      cin>>size;
+      sizec=size;
+      while(contador<sizec){
+      for(int i=0;i<sizec;i++){
+          if(contador==0){
+           convernumer[i]=numer[i];
+          }
+          else{
+           convernumer[i]=numer[(i+size)];
+           size+=sizec;
+          }
+         }
+      N=atoi(convernumer);
+      cout<<"Numero:"<<N;
+      total+=N;
+      contador+=1;
+      }
+      cout<<"Suma: "<<total<<endl;
+      break;
+ }
  case 10:{
        int i, total=0, valor,antvalor=0;
        char numerointro[]={};
@@ -288,6 +414,9 @@ int main()
     }
     break;
  }
+ case 13:{
+     ejercicio_13();
+ }
  case 14:{
      int matriz[5][5],matriz2[5][5],opcion,opcion2,contador=0;
      cout<<"Seleccione una de las siguientes opciones"<<"\n(1)Girar 90 grados"<<"\n(2)Girar 180 grados"<<"\n(3)Girar 270 grados"<<endl;
@@ -354,6 +483,86 @@ int main()
      }
     break;
     }
+ case 15:{
+         int a[4], b[4];
+         //Se reciben los valores a ingresar en las listas
+         cout << "TABLA DE VALORES"<<endl<<"#1 -> cordenada en X"<<endl<<
+                 "#2 -> cordenada en Y"<<endl<<"#3 -> Ancho"<<endl<<"#4 -> Alto"<<endl;
+         cout << "Ingresa valores para A: ";
+         for(int i=0; i<4;i++){
+             cout << "valor #"<<i+1<< " para A"<<endl;
+             cin >> a[i];
+         }
+         for(int i=0; i<4;i++){
+             cout << "valor #"<<i+1<< " para B"<<endl;
+             cin >> b[i];
+         }
+
+         //          x-y-a-h
+         //int a[4]={0,0,8,4};
+         //int b[4]={5,2,6,7};
+         int c[4]={0,0,0,0};
+         int encontrado_cord=0; //guia para cordenaras, ancho y altura
+         int encontrar_altura=0;
+         //Generar grafica
+         int ancho_grafica=30;
+         int alto_grafica=25;
+
+         string grafica[alto_grafica][ancho_grafica];
+         for(int i=0; i<alto_grafica;i++){
+             for(int j=0; j<ancho_grafica;j++){
+                 grafica[i][j]=" - ";
+                 cout << grafica[i][j];
+             }
+             cout << endl;
+         }
+
+         //Ingresar figura A al plano
+         for(int i=a[1]; i<(a[3]+a[1]);i++){
+             for(int j=a[0]; j<(a[2]+a[0]);j++){
+                 grafica[i][j]=" X ";
+             }
+         }
+         //Ingresar figura B al plano y reemplazar por la O las intersecciones de A Y B
+         for(int i=b[1]; i<(b[3]+b[1]);i++){
+             for(int j=b[0]; j<(b[2]+b[0]);j++){
+                 if(grafica[i][j]== " X "){
+                     if(encontrado_cord==0){
+                         c[0]=i;
+                         c[1]=j;
+                         encontrado_cord++;
+                     }
+                     encontrar_altura=1;
+                     if(encontrado_cord==1){
+                         c[2]=c[2]+1;
+                     }
+                     grafica[i][j]=" O ";
+                 }else{
+                     grafica[i][j]=" x ";
+                 }
+
+             }
+             if(encontrado_cord==1){
+                 encontrado_cord++;
+             }
+             if(encontrar_altura==1){
+                 c[3]++;
+                 encontrar_altura=2;
+             }
+         }
+         cout << "UPDATE"<<endl<<endl;
+
+         //Imprime resultado
+
+         for(int i=0; i<alto_grafica;i++){
+             for(int j=0; j<ancho_grafica;j++){
+                 cout << grafica[i][j];
+             }
+             cout << endl;
+         }
+         cout << "C={"<<c[1] << ","<<c[0] << ","<<c[2] << ","<<c[3] << "}"<<endl;
+        break;
+ }
  case 16:{
      char n[1]={};
      int ni,lado_malla;
@@ -364,6 +573,45 @@ int main()
      cout<<"\nEl numero de caminos posibles es: "<<lado_malla<<endl;
      break;
     }
+ case 17:{
+     int numero_inicio, suma, suma_total=0;
+         int numero_auxiliar = 0, contador=0;;
+
+         cout<<"Ingresa un numero: ";
+         cin >> numero_inicio;
+
+         try {
+             while (numero_inicio!=numero_auxiliar && contador<20) {
+
+                 if(contador==0){
+                     numero_auxiliar = numero_inicio;
+                     suma = 0;
+                 }else{
+                     suma = 0;
+                 }
+
+
+                 for(int i=1;i<numero_auxiliar ;i++){
+                     if(numero_auxiliar%i == 0){
+                         suma += i;
+                     }
+                 }
+                 if(suma<numero_inicio){
+                     suma_total += suma;
+                 }
+                 numero_auxiliar = suma;
+                 contador++;
+                 cout << endl<<numero_auxiliar<<endl;
+
+                 if(numero_auxiliar==0){
+                     break;
+                 }
+             }
+             cout << endl<<endl<<"El resultado de la suma es: "<<suma_total<<endl;
+         } catch (char error) {
+             cout << "Error: ";
+         }
+ }
  case 18:{//FALTA POR TERMINAR ESTE EJERCICIO
      int lista[]={0,1,2,3,4,5,6,7,8,9},n;
      cout<<"Ingrese el valor para n: ";
