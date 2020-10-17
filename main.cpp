@@ -94,6 +94,27 @@ int main()
  numeroswitch=validar_numero(numero_ejercicio);
 
  switch(numeroswitch){
+ case 1:{
+     int valores[]={50000,20000,10000,5000,2000,1000,500,200,100,50,0},dinero,copia_dinero,veces,dinero2=0;
+     cout<<"Ingrese por favor la cantidad de dinero: ";
+     cin>>dinero;
+     copia_dinero=dinero;
+     for(int i=0; valores[i]!=0;i++){
+         veces=dinero/valores[i];
+         if(veces>0){
+             cout<<valores[i]<<": "<<veces<<endl;
+             dinero=dinero-((valores[i])*(veces));
+             dinero2+=((valores[i])*(veces));
+         }
+         else{
+             cout<<valores[i]<<": "<<0<<endl;
+         }
+     }
+     if(dinero2<copia_dinero){
+         cout<<"Faltante: "<<copia_dinero-dinero2<<endl;
+     }
+     break;
+ }
  case 2: {
   int i,i2, contador=0,letra=0;
   char ListaDeCaracteres[200]={},ABC[26];
